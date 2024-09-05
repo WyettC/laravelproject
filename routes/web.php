@@ -14,3 +14,10 @@ Route::get('/button', function () {
     return view('button');
 })->name('button');
 
+Route::get('/search', function () {
+    return view('search');
+    });
+
+Route::get('/pagination', function () {
+    return view('pagination');
+    });
