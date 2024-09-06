@@ -21,3 +21,14 @@ Route::get('/search', function () {
 Route::get('/pagination', function () {
     return view('pagination');
     });
+
+Route::get('/filter', function () {
+    return view('filter');
+})->name('filter');
+
+Route::get('/darksave', function () {
+    return view('darksave');
+})->name('darksave');
+
+
+
