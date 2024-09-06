@@ -30,5 +30,13 @@ Route::get('/darksave', function () {
     return view('darksave');
 })->name('darksave');
 
+Route::get('/darkfilter', function () {
+    return view('darkfilter');
+})->name('darkfilter');
+
+Route::get('/darkbutton', function () {
+    return view('darkbutton');
+})->name('darkbutton');
+
 
 
