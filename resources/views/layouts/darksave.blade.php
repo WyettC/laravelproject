@@ -1,33 +1,33 @@
 @extends('layouts.layout')
 
-@section('title', 'Dark Mode Save Page')
+@section('title', ' Dark Mode Save Change')
 
 @section('content')
 
-<div id="saveModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div style="background-color: #303b47; padding: 20px; border-radius: 8px; width: 300px; text-align: center;">
-        <h2 style="margin-bottom: 20px; font-weight: bold; text-align: left; color: white;">Save Changes</h2>
-        <p style="margin-bottom: 30px; text-align: left; font-size: 14px; font-family: 'Montserrat', sans-serif; color: #e5e8f3;">Are you sure you want to save your changes?</p>
-        <div style="display: flex; justify-content: space-between;">
-            <button style="background-color: #4a5161; color: white; border: none; height: 24px; padding: 0 10px; border-radius: 5px; font-size: 16px; cursor: pointer;">Cancel</button>
-            <button style="background-color: #5f6e82; color: white; border: none; height: 24px; padding: 0 10px; border-radius: 5px; font-size: 16px; cursor: pointer;">UPDATE</button>
+<!-- Main Modal Container -->
+<div id="saveModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+    <!-- Modal Content -->
+    <div class="px-4 py-2 rounded-md shadow hover:bg-gray-600" style="background-color: #303b47; color: white;">
+        <h2 class="mb-4 text-2xl font-bold text-white text-center">Save Changes</h2>
+        <p class="mb-6 text-white">Are you sure you want to save your changes?</p>
+        <div class="flex justify-between space-x-4">
+            <!-- Cancel Button -->
+            <button class="px-4 py-2 rounded-md shadow hover:bg-gray-600" style="background-color: #4a5161; color: white;">
+             Cancel
+            <!-- Save/Update Button -->
+            <button class="px-4 py-2 rounded-md shadow hover:bg-blue-800" style="background-color: #5f6e82; color: white;">
+            UPDATE
         </div>
     </div>
 </div>
 
 <script>
+    // Show modal when the page loads
     window.onload = function() {
-        document.getElementById('saveModal').style.display = 'flex';
+        document.getElementById('saveModal').classList.remove('hidden');
     };
-
-    function closeModal() {
-        document.getElementById('saveModal').style.display = 'none';
-    }
-
-    function updateData() {
-        closeModal();
-    }
 </script>
 
 @endsection
+
 
