@@ -1,113 +1,39 @@
 @extends('layouts.layout')
 
-@section('title', 'Filter and Export')
+@section('title', 'Dark Filter and Export')
 
 @section('content')
 
-<div id="filterExportModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div class="modal-content dark-mode">
-        <div class="modal-header">
-            <div class="button-container">
-                <button class="filter-button dark-mode-button black-button">
-                    Filter
-                    <span class="dropdown-icon">&#x25BC;</span> 
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="export-button dark-mode-button">
-                    Export
-                    <span class="dropdown-icon">&#x25BC;</span> 
-                </button>
-            </div>
+<!-- Main Modal Container -->
+<div id="filterExportModal" class="fixed inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-50 hidden">
+    <!-- Modal Content -->
+    <div class="px-4 py-2 rounded-md shadow-lg hover:bg-gray-200" style="background-color: #ffffff; color: black; width: 320px;">
+        <div class="flex justify-between space-x-4">
+            <!-- Export Button -->
+            <button class="px-4 py-2 rounded-lg shadow-lg hover:bg-gray-300" style="background-color: #4a5161; color: white; font-size: 12px;">
+                Export
+                <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span>
+            </button>
+            <!-- Filter Button -->
+            <button class="px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600" style="background-color: #4a5161; color: white; font-size: 12px;">
+                Filter
+                <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span>
+            </button>
         </div>
     </div>
 </div>
 
-<style>
-    
-    .modal-content.dark-mode {
-        background-color: #2f3b4c; 
-        padding: 20px;
-        border-radius: 8px;
-        width: 300px;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
-    }
-
-    .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-    }
-
-    .button-container {
-        position: relative;
-    }
-
-    .dark-mode-button {
-        color: white;
-        border: none;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 20px;
-        border-radius: 5px;
-        font-size: 12px;
-        cursor: pointer;
-    }
-
-   
-    .black-button {
-        background-color: black;
-    }
-
-    .export-button.dark-mode-button {
-        background-color: black; 
-    }
-
-    .dropdown-icon {
-        font-size: 12px;
-        margin-left: 5px;
-        color: white;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .modal-content.dark-mode {
-            width: 90%;
-            padding: 15px;
-        }
-
-        .modal-header {
-            flex-direction: column;
-        }
-
-        .button-container {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .dark-mode-button {
-            width: 100%;
-            font-size: 14px;
-            padding: 0 15px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-        .dropdown-icon {
-            font-size: 14px;
-        }
-    }
-</style>
-
 <script>
+    // Show modal when the page loads
     window.onload = function() {
-        document.getElementById('filterExportModal').style.display = 'flex';
+        document.getElementById('filterExportModal').classList.remove('hidden');
     };
 
     function closeModal() {
-        document.getElementById('filterExportModal').style.display = 'none';
+        document.getElementById('filterExportModal').classList.add('hidden');
     }
 </script>
+
+@endsection
 
 @endsection
