@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Dark Submit and Cancel Button')
+@section('title', 'Dark Mode Submit and Cancel Button')
 
 @section('content')
 
