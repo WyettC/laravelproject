@@ -4,36 +4,35 @@
 
 @section('content')
 
-<div id="filterExportModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div style="background-color: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;"> 
-
-            <div style="position: relative;">
-                <button style="background-color: #e5e8f3; color: #3b5998; border: none; height: 16px; line-height: 16px; padding: 0 10px; border-radius: 5px; font-size: 10px; cursor: pointer;">
-                    Filter
-                    <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span> 
-                </button>
-            </div>
-
-            <div style="position: relative;">
-                <button style="background-color: #3b5998; color: white; border: none; height: 16px; line-height: 16px; padding: 0 10px; border-radius: 5px; font-size: 10px; cursor: pointer;">
-                    Export
-                    <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span> 
-                </button>
-               
-            </div>
+<!-- Main Modal Container -->
+<div id="filterExportModal" class="fixed inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-50 hidden">
+    <!-- Modal Content -->
+    <div class="px-4 py-2 rounded-md shadow-lg hover:bg-gray-200" style="background-color: #ffffff; color: black; width: 320px;">
+        <div class="flex justify-between space-x-4">
+            <!-- Export Button -->
+            <button class="px-4 py-2 rounded-lg shadow-lg hover:bg-gray-300" style="background-color: #e5e8f3; color: #3b5998; font-size: 12px;">
+                Export
+                <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span>
+            </button>
+            <!-- Filter Button -->
+            <button class="px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600" style="background-color: #3b5998; color: white; font-size: 12px;">
+                Filter
+                <span style="font-size: 10px; margin-left: 5px;">&#x25BC;</span>
+            </button>
         </div>
     </div>
 </div>
 
 <script>
+    // Show modal when the page loads
     window.onload = function() {
-        document.getElementById('filterExportModal').style.display = 'flex';
+        document.getElementById('filterExportModal').classList.remove('hidden');
     };
 
     function closeModal() {
-        document.getElementById('filterExportModal').style.display = 'none';
+        document.getElementById('filterExportModal').classList.add('hidden');
     }
 </script>
 
 @endsection
+
