@@ -1,33 +1,33 @@
 @extends('layouts.layout')
 
-@section('title', 'Save Page')
+@section('title', 'Save Change')
 
 @section('content')
 
-<div id="saveModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div style="background-color: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center;">
-        <h2 style="margin-bottom: 20px; font-weight: bold; text-align: left;">Save Changes</h2>
-        <p style="margin-bottom: 30px; text-align: left; font-size: 14px; font-family: Calibri, sans-serif;">Are you sure you want to save your changes?</p>
-        <div style="display: flex; justify-content: space-between;">
-            <button style="background-color: #e5e8f3; color: #3b5998; border: none; height: 24px; line-height: 24px; padding: 0 10px; border-radius: 16px; font-size: 12px; cursor: not-allowed; pointer-events: none;">Cancel</button>
-            <button style="background-color: #3b5998; color: white; border: none; height: 24px; line-height: 24px; padding: 0 10px; border-radius: 24px; font-size: 12px; cursor: not-allowed; pointer-events: none;">UPDATE</button>
+<!-- Main Modal Container -->
+<div id="saveModal" class="fixed inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-50 hidden">
+    <!-- Modal Content -->
+    <div class="px-4 py-2 rounded-md shadow-lg hover:bg-gray-200" style="background-color: #ffffff; color: black;">
+        <h2 class="mb-4 text-2xl font-bold text-black text-center">Save Changes</h2>
+        <p class="mb-6 text-gray-600">Are you sure you want to save your changes?</p>
+        <div class="flex justify-between space-x-4">
+            <!-- Cancel Button -->
+            <button class="px-4 py-2 rounded-md shadow hover:bg-gray-300" style="background-color: #e5e8f3; color: #475998;">
+             Cancel
+            </button>
+            <!-- Save/Update Button -->
+            <button class="px-4 py-2 rounded-md shadow hover:bg-blue-600" style="background-color: #475998; color: white;">
+            UPDATE
+            </button>
         </div>
     </div>
 </div>
 
 <script>
+    // Show modal when the page loads
     window.onload = function() {
-        document.getElementById('saveModal').style.display = 'flex';
+        document.getElementById('saveModal').classList.remove('hidden');
     };
-
-    function closeModal() {
-        document.getElementById('saveModal').style.display = 'none';
-    }
-
-    function updateData() {
-        closeModal();
-    }
 </script>
 
 @endsection
-
