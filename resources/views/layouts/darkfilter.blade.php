@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Dark Filter and Export')
+@section('title', 'Dark Mode Filter and Export')
 
 @section('content')
 
