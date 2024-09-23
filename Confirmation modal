@@ -1,0 +1,119 @@
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen flex justify-center items-center bg-gray-100">
+
+    <div class="w-[391px] h-[388px] p-[30px] bg-white rounded-3xl flex flex-col justify-center items-start gap-[30px] shadow-lg">
+        <div class="self-stretch text-center text-black text-2xl font-bold font-montserrat">Change Password</div>
+        <div class="self-stretch h-[269px] flex flex-col justify-start items-start gap-[30px]">
+            <div class="self-stretch h-[200px] flex flex-col justify-start items-start gap-[25px]">
+                <input type="password" placeholder="Password" id="password" class="self-stretch h-[50px] px-[15px] py-2.5 rounded-lg border border-black flex items-center text-zinc-400">
+                <input type="password" placeholder="New Password" id="newPassword" class="self-stretch h-[50px] px-[15px] py-2.5 rounded-lg border border-black flex items-center text-zinc-400">
+                <input type="password" placeholder="Retype Password" id="retypePassword" class="self-stretch h-[50px] px-[15px] py-2.5 rounded-lg border border-black flex items-center text-zinc-400">
+            </div>
+            <div class="self-stretch flex justify-between items-center">
+                <button id="cancelBtn" class="w-[88px] h-[39px] bg-slate-200 rounded-md flex items-center justify-center border border-gray-400">
+                    <span class="text-slate-500 text-base font-medium font-montserrat">Cancel</span>
+                </button>
+                <button id="updateBtn" class="w-[88px] h-[39px] bg-slate-500 rounded-md flex items-center justify-center border border-gray-700">
+                    <span class="text-white text-base font-medium font-montserrat">UPDATE</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="cancelModal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+        <div class="w-[300px] rounded-[20px] flex flex-col justify-center items-center bg-white p-6 shadow-lg">
+            <div class="text-center text-black text-lg font-bold">Confirm Cancellation</div>
+            <div class="text-center text-black text-sm font-normal mt-2">Are you sure you want to cancel filling in the form?</div>
+            <div class="flex justify-between mt-4 w-full">
+                <button id="confirmCancel" class="w-[120px] bg-red-500 text-white p-2 rounded">Yes, Cancel</button>
+                <button id="closeCancelModal" class="w-[120px] bg-slate-300 text-black p-2 rounded">No, Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="modal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+        <div class="w-[375px] rounded-[20px] flex flex-col justify-center items-center bg-white p-6 shadow-lg">
+            <div id="checkmark" class="flex justify-center mb-4 animate-pulse">
+                <div class="w-[72px] h-[72px] bg-green-800 rounded-full flex items-center justify-center">
+                    <span class="text-white font-bold text-3xl">✓</span>
+                </div>
+            </div>
+            <div class="text-center text-black text-2xl font-bold font-montserrat">Password Changed</div>
+            <div class="text-center text-black text-[15px] font-normal font-montserrat mt-2">Your password has been changed successfully.</div>
+            <button id="closeModal" class="mt-6 w-full bg-slate-500 text-white p-2 rounded">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+        <div class="w-[300px] rounded-[20px] flex flex-col justify-center items-center bg-white p-6 shadow-lg">
+            <div class="text-center text-black text-lg font-bold">Error</div>
+            <div class="text-center text-black text-sm font-normal mt-2">Passwords do not match.</div>
+            <button id="closeErrorModal" class="mt-4 w-full bg-red-500 text-white p-2 rounded">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const updateBtn = document.getElementById('updateBtn');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const cancelModal = document.getElementById('cancelModal');
+        const closeCancelModal = document.getElementById('closeCancelModal');
+        const confirmCancel = document.getElementById('confirmCancel');
+        const passwordInput = document.getElementById('password');
+        const newPasswordInput = document.getElementById('newPassword');
+        const retypePasswordInput = document.getElementById('retypePassword');
+        const errorModal = document.getElementById('errorModal');
+        const closeErrorModal = document.getElementById('closeErrorModal');
+
+        // Show modal when UPDATE button is clicked
+        updateBtn.addEventListener('click', () => {
+            const newPassword = newPasswordInput.value;
+            const retypePassword = retypePasswordInput.value;
+
+            // Check if passwords match
+            if (newPassword && newPassword === retypePassword) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.add('opacity-0');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 500);
+                }, 5000);
+            } else {
+                errorModal.classList.remove('hidden');
+            }
+        });
+
+        // Show cancel confirmation modal
+        cancelBtn.addEventListener('click', () => {
+            cancelModal.classList.remove('hidden');
+        });
+
+        // Clear all inputs and hide cancel modal if confirmed
+        confirmCancel.addEventListener('click', () => {
+            passwordInput.value = '';
+            newPasswordInput.value = '';
+            retypePasswordInput.value = '';
+            cancelModal.classList.add('hidden');
+        });
+
+        // Hide cancel modal if not confirmed
+        closeCancelModal.addEventListener('click', () => {
+            cancelModal.classList.add('hidden');
+        });
+
+        // Hide modal when Close button is clicked
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Hide error modal when Close button is clicked
+        closeErrorModal.addEventListener('click', () => {
+            errorModal.classList.add('hidden');
+        });
+    </script>
